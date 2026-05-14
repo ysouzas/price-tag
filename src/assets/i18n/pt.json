@@ -1,4 +1,55 @@
 {
   "HELLO": "Olá",
-  "TITLE": "Etiqueta de Preço"
+  "TITLE": "Etiqueta de Preço",
+  "SCANNER": {
+    "TITLE": "Leitor de Código de Barras",
+    "SCANNING": "Escaneando...",
+    "DETECTED": "Código de Barras Detectado",
+    "PERMISSION_DENIED": "Acesso à câmera foi negado. Por favor, ative as permissões de câmera para usar o leitor de código de barras.",
+    "NO_CAMERA": "A câmera não está disponível neste dispositivo. Por favor, use a entrada manual para procurar produtos.",
+    "MANUAL_ENTRY": "Entrada Manual",
+    "BARCODE_LABEL": "Código de Barras",
+    "BARCODE_REQUIRED": "Código de barras é obrigatório",
+    "BARCODE_INVALID": "Código de barras deve conter apenas números",
+    "LOOKUP": "Procurar Produto",
+    "CLEAR": "Limpar",
+    "STOP": "Parar Escaneamento",
+    "START": "Iniciar Escaneamento"
+  },
+  "SEARCH": {
+    "TITLE": "Procurar Produtos",
+    "PLACEHOLDER": "Procurar por nome do produto...",
+    "SEARCHING": "Procurando...",
+    "RESULTS": "Resultados",
+    "BARCODE": "Código de Barras",
+    "NO_RESULTS": "Nenhum resultado encontrado",
+    "NO_RESULTS_DESC": "Tente um termo de busca diferente ou crie um novo produto.",
+    "CREATE_NEW": "Criar Novo Produto",
+    "EMPTY_TITLE": "Procurar Produtos",
+    "EMPTY_DESC": "Digite o nome de um produto para procurar",
+    "SUPERMARKETS": "Pesquisar supermercados..."
+  },
+  "NAVIGATION": {
+    "SCANNER": "Scanner",
+    "SEARCH": "Produtos",
+    "SUPERMARKETS": "Supermercados",
+    "PRODUCTS": "Produtos"
+  },
+  "SUPERMARKETS": {
+    "TITLE": "Supermercados",
+    "DESCRIPTION": "Gerenciar supermercados em breve..."
+  },
+  "PRODUCTS": {
+    "TITLE": "Produtos",
+    "DESCRIPTION": "Gerenciar produtos em breve..."
+  },
+  "PRODUCT": {
+    "ADD_PRICE": "Adicionar Preço",
+    "SUPERMARKET": "Supermercado",
+    "PRICE": "Preço",
+    "SAVE_PRICE": "Guardar Preço",
+    "PRICE_HISTORY": "Histórico de Preços",
+    "NO_HISTORY": "Sem histórico de preços.",
+    "NOT_FOUND": "Produto não encontrado."
+  }
 }

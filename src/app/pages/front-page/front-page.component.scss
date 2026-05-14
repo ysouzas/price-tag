@@ -1,0 +1,18 @@
+.front-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 64px; // Space for bottom navigation on mobile
+
+  @media (min-width: 600px) {
+    padding-bottom: 0;
+  }
+}

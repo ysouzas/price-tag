@@ -1,0 +1,19 @@
+<div class="front-page-container">
+  <mat-tab-group mat-stretch-tabs="false" animationDuration="200ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">search</mat-icon>
+        {{ 'NAVIGATION.SEARCH' | translate }}
+      </ng-template>
+      <app-product-search />
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="tab-icon">store</mat-icon>
+        {{ 'NAVIGATION.SUPERMARKETS' | translate }}
+      </ng-template>
+      <app-supermarket-search />
+    </mat-tab>
+  </mat-tab-group>
+</div>

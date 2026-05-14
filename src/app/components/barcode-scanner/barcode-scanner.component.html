@@ -1,0 +1,127 @@
+<div class="barcode-scanner-container">
+  <mat-card class="scanner-card">
+    <mat-card-header>
+      <mat-card-title>{{ "SCANNER.TITLE" | translate }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Camera Section -->
+      <div
+        class="camera-section"
+        *ngIf="isCameraAvailable && !cameraPermissionDenied && scanningActive"
+      >
+        <div class="video-container">
+          <video
+            #videoElement
+            playsinline
+            autoplay
+            muted
+            class="video-element"
+          ></video>
+          <canvas #canvasElement style="display: none"></canvas>
+
+          <div class="scanning-overlay">
+            <div class="scan-guides"></div>
+            <div *ngIf="isScanning" class="scanner-loading">
+              <mat-spinner diameter="40"></mat-spinner>
+              <p>{{ "SCANNER.SCANNING" | translate }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="detected-barcode" *ngIf="detectedBarcode">
+          <mat-icon>check_circle</mat-icon>
+          <span
+            >{{ "SCANNER.DETECTED" | translate }}: {{ detectedBarcode }}</span
+          >
+        </div>
+
+        <div class="camera-controls">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="stopScanning()"
+            *ngIf="isScanning"
+          >
+            {{ "SCANNER.STOP" | translate }}
+          </button>
+          <button
+            mat-raised-button
+            (click)="startScanning()"
+            *ngIf="!isScanning"
+          >
+            {{ "SCANNER.START" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Camera Permission Denied -->
+      <div class="permission-denied" *ngIf="cameraPermissionDenied">
+        <mat-icon>camera_off</mat-icon>
+        <p>{{ "SCANNER.PERMISSION_DENIED" | translate }}</p>
+      </div>
+
+      <!-- Camera Not Available -->
+      <div
+        class="camera-not-available"
+        *ngIf="!isCameraAvailable && !cameraPermissionDenied"
+      >
+        <mat-icon>videocam_off</mat-icon>
+        <p>{{ "SCANNER.NO_CAMERA" | translate }}</p>
+      </div>
+
+      <!-- Manual Barcode Input -->
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmitBarcode()"
+        class="manual-input-section"
+      >
+        <h3>{{ "SCANNER.MANUAL_ENTRY" | translate }}</h3>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>{{ "SCANNER.BARCODE_LABEL" | translate }}</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="manualBarcode"
+            placeholder="0123456789"
+          />
+          <mat-icon matSuffix>barcode</mat-icon>
+        </mat-form-field>
+
+        <div
+          class="input-errors"
+          *ngIf="
+            form.get('manualBarcode')?.invalid &&
+            form.get('manualBarcode')?.touched
+          "
+        >
+          <small *ngIf="form.get('manualBarcode')?.hasError('required')">
+            {{ "SCANNER.BARCODE_REQUIRED" | translate }}
+          </small>
+          <small *ngIf="form.get('manualBarcode')?.hasError('pattern')">
+            {{ "SCANNER.BARCODE_INVALID" | translate }}
+          </small>
+        </div>
+
+        <div class="manual-input-controls">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            {{ "SCANNER.LOOKUP" | translate }}
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="clearDetectedBarcode()"
+          >
+            {{ "SCANNER.CLEAR" | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

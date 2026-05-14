@@ -1,0 +1,66 @@
+<div class="product-details-container">
+  <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="40" class="page-spinner" />
+
+  <ng-container *ngIf="!isLoading && product">
+    <!-- Product Info Card -->
+    <mat-card class="product-card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar>inventory_2</mat-icon>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.barcode }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="product-meta">
+          <span *ngIf="product.category">
+            <mat-icon>category</mat-icon> {{ product.category }}
+          </span>
+          <span *ngIf="product.unit_type">
+            <mat-icon>straighten</mat-icon> {{ product.unit_type }}
+          </span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Add Price Form -->
+    <mat-card class="price-form-card">
+      <mat-card-header>
+        <mat-card-title>{{ 'PRODUCT.ADD_PRICE' | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="priceForm" (ngSubmit)="savePrice()" class="price-form">
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'PRODUCT.SUPERMARKET' | translate }}</mat-label>
+            <mat-select formControlName="supermarket_id">
+              <mat-option *ngFor="let market of supermarkets" [value]="market.id">
+                {{ market.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ 'PRODUCT.PRICE' | translate }}</mat-label>
+            <mat-icon matPrefix>euro</mat-icon>
+            <input matInput type="number" step="0.01" min="0" formControlName="price" />
+          </mat-form-field>
+
+          <button mat-flat-button color="primary" type="submit" [disabled]="priceForm.invalid || isSaving">
+            <mat-icon>save</mat-icon>
+            {{ 'PRODUCT.SAVE_PRICE' | translate }}
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Price History -->
+    <app-price-history [barcode]="barcode" />
+  </ng-container>
+
+  <ng-container *ngIf="!isLoading && !product">
+    <mat-card class="not-found-card">
+      <mat-card-content>
+        <mat-icon>search_off</mat-icon>
+        <p>{{ 'PRODUCT.NOT_FOUND' | translate }}</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+</div>

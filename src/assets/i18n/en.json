@@ -1,4 +1,55 @@
 {
   "HELLO": "Hello",
-  "TITLE": "Price Tag"
+  "TITLE": "Price Tag",
+  "SCANNER": {
+    "TITLE": "Barcode Scanner",
+    "SCANNING": "Scanning...",
+    "DETECTED": "Barcode Detected",
+    "PERMISSION_DENIED": "Camera access was denied. Please enable camera permissions to use the barcode scanner.",
+    "NO_CAMERA": "Camera is not available on this device. Please use manual entry to look up products.",
+    "MANUAL_ENTRY": "Manual Entry",
+    "BARCODE_LABEL": "Barcode",
+    "BARCODE_REQUIRED": "Barcode is required",
+    "BARCODE_INVALID": "Barcode must contain only numbers",
+    "LOOKUP": "Look Up Product",
+    "CLEAR": "Clear",
+    "STOP": "Stop Scanning",
+    "START": "Start Scanning"
+  },
+  "SEARCH": {
+    "TITLE": "Search Products",
+    "PLACEHOLDER": "Search by product name...",
+    "SEARCHING": "Searching...",
+    "RESULTS": "Results",
+    "BARCODE": "Barcode",
+    "NO_RESULTS": "No results found",
+    "NO_RESULTS_DESC": "Try a different search term or create a new product.",
+    "CREATE_NEW": "Create New Product",
+    "EMPTY_TITLE": "Search Products",
+    "EMPTY_DESC": "Enter a product name to search",
+    "SUPERMARKETS": "Search supermarkets..."
+  },
+  "NAVIGATION": {
+    "SCANNER": "Scanner",
+    "SEARCH": "Products",
+    "SUPERMARKETS": "Supermarkets",
+    "PRODUCTS": "Products"
+  },
+  "SUPERMARKETS": {
+    "TITLE": "Supermarkets",
+    "DESCRIPTION": "Manage supermarkets coming soon..."
+  },
+  "PRODUCTS": {
+    "TITLE": "Products",
+    "DESCRIPTION": "Manage products coming soon..."
+  },
+  "PRODUCT": {
+    "ADD_PRICE": "Add Price",
+    "SUPERMARKET": "Supermarket",
+    "PRICE": "Price",
+    "SAVE_PRICE": "Save Price",
+    "PRICE_HISTORY": "Price History",
+    "NO_HISTORY": "No price history yet.",
+    "NOT_FOUND": "Product not found."
+  }
 }

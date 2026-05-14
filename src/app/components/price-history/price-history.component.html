@@ -1,0 +1,19 @@
+<div class="price-history">
+  <h3 class="section-title">{{ 'PRODUCT.PRICE_HISTORY' | translate }}</h3>
+
+  <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="32" />
+
+  <mat-list *ngIf="!isLoading && purchases.length > 0">
+    <mat-list-item *ngFor="let purchase of purchases">
+      <mat-icon matListItemIcon>receipt_long</mat-icon>
+      <span matListItemTitle>{{ purchase.price_at_purchase | currency:'EUR' }}</span>
+      <span matListItemLine>
+        {{ purchase.supermarket?.name }} · {{ purchase.purchase_date | date:'mediumDate' }}
+      </span>
+    </mat-list-item>
+  </mat-list>
+
+  <p *ngIf="!isLoading && purchases.length === 0" class="no-history">
+    {{ 'PRODUCT.NO_HISTORY' | translate }}
+  </p>
+</div>

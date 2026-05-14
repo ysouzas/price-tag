@@ -1,0 +1,17 @@
+<nav class="navigation-bar">
+  <div class="nav-container">
+    <button
+      *ngFor="let item of navItems"
+      [attr.aria-label]="item.label | translate"
+      [attr.aria-current]="isActive(item) ? 'page' : null"
+      class="nav-item"
+      [class.active]="isActive(item)"
+      (click)="onNavItemClick(item)"
+      [routerLink]="item.route || null"
+      mat-button
+    >
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span class="nav-label">{{ item.label | translate }}</span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,20 @@
+<div class="supermarket-search">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>{{ 'SEARCH.SUPERMARKETS' | translate }}</mat-label>
+    <mat-icon matPrefix>store</mat-icon>
+    <input matInput [formControl]="searchControl" />
+  </mat-form-field>
+
+  <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="36" />
+
+  <mat-list *ngIf="!isLoading">
+    <mat-list-item *ngFor="let market of filteredSupermarkets">
+      <mat-icon matListItemIcon>store_mall_directory</mat-icon>
+      <span matListItemTitle>{{ market.name }}</span>
+    </mat-list-item>
+
+    <p *ngIf="filteredSupermarkets.length === 0" class="no-results">
+      {{ 'SEARCH.NO_RESULTS' | translate }}
+    </p>
+  </mat-list>
+</div>

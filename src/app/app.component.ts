@@ -1,27 +1,41 @@
 import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { BackButtonComponent } from './components/back-button/back-button.component';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BackButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   title = 'price-tag';
+  showBackButton = false;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private renderer: Renderer2,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.initThemeDetection();
     this.initLanguageDetection();
+    this.initBackButtonVisibility();
+  }
+
+  private initBackButtonVisibility() {
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe((e: any) => {
+        // Show back button on all pages except the root front page
+        this.showBackButton = e.url !== '/' && e.url !== '';
+      });
   }
 
   private initLanguageDetection() {
