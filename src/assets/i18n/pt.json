@@ -37,11 +37,15 @@
   },
   "SUPERMARKETS": {
     "TITLE": "Supermercados",
-    "DESCRIPTION": "Gerenciar supermercados em breve..."
+    "ADD_BUTTON": "Adicionar Supermercado",
+    "EMPTY": "Nenhum supermercado encontrado. Adicione o primeiro!",
+    "DESCRIPTION": "Gerencie seus locais de compra favoritos."
   },
   "PRODUCTS": {
     "TITLE": "Produtos",
-    "DESCRIPTION": "Gerenciar produtos em breve..."
+    "ADD_BUTTON": "Adicionar Produto",
+    "EMPTY": "Nenhum produto encontrado. Adicione o primeiro!",
+    "DESCRIPTION": "Gerencie seu catálogo de produtos."
   },
   "HOME": {
     "TITLE": "Etiqueta de Preço",
@@ -61,9 +65,23 @@
     "ADD_PRICE": "Adicionar Preço",
     "SUPERMARKET": "Supermercado",
     "PRICE": "Preço",
-    "SAVE_PRICE": "Guardar Preço",
+    "SAVE_PRICE": "Salvar Preço",
     "PRICE_HISTORY": "Histórico de Preços",
     "NO_HISTORY": "Sem histórico de preços.",
-    "NOT_FOUND": "Produto não encontrado."
+    "NOT_FOUND": "Produto não encontrado.",
+    "CREATE_TITLE": "Criar Novo Produto",
+    "NAME": "Nome do Produto",
+    "BARCODE": "Código de Barras",
+    "CATEGORY": "Categoria",
+    "UNIT_TYPE": "Tipo de Unidade"
+  },
+  "SUPERMARKET": {
+    "CREATE_TITLE": "Adicionar Supermercado",
+    "NAME": "Nome do Supermercado"
+  },
+  "COMMON": {
+    "CANCEL": "Cancelar",
+    "SAVE": "Salvar",
+    "OK": "OK"
   }
 }

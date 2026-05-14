@@ -81,10 +81,11 @@ export class ProductDetailsComponent implements OnInit {
 
     const { supermarket_id, price } = this.priceForm.value;
     const entry = {
+      product_id: this.product?.id,
       product_barcode: this.barcode,
       supermarket_id,
       price: parseFloat(price),
-      purchased_at: new Date().toISOString().split('T')[0],
+      purchased_at: new Date().toISOString(),
     };
 
     from(

@@ -16,6 +16,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ProductFormDialogComponent } from '../dialogs/product-form-dialog.component';
 import { Product, ProductService } from '../../services/product/product.service';
 
 @Component({
@@ -25,12 +27,13 @@ import { Product, ProductService } from '../../services/product/product.service'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatCardModule,
+    MatDialogModule,
     TranslateModule,
   ],
   templateUrl: './product-search.component.html',
@@ -47,7 +50,8 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -114,8 +118,17 @@ export class ProductSearchComponent implements OnInit, OnDestroy {
   }
 
   createNewProduct(): void {
-    console.log('Create new product');
-    // TODO: Navigate to product creation form
+    const dialogRef = this.dialog.open(ProductFormDialogComponent, {
+      width: '500px',
+      maxWidth: '95vw',
+      data: { barcode: this.searchControl.value }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.selectProduct(result);
+      }
+    });
   }
 
   ngOnDestroy(): void {

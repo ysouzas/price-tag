@@ -37,11 +37,15 @@
   },
   "SUPERMARKETS": {
     "TITLE": "Supermarkets",
-    "DESCRIPTION": "Manage supermarkets coming soon..."
+    "ADD_BUTTON": "Add Supermarket",
+    "EMPTY": "No supermarkets found. Add your first one!",
+    "DESCRIPTION": "Manage your favorite shopping locations."
   },
   "PRODUCTS": {
     "TITLE": "Products",
-    "DESCRIPTION": "Manage products coming soon..."
+    "ADD_BUTTON": "Add Product",
+    "EMPTY": "No products found. Add your first one!",
+    "DESCRIPTION": "Manage your product catalog."
   },
   "HOME": {
     "TITLE": "Price Tag",
@@ -64,6 +68,20 @@
     "SAVE_PRICE": "Save Price",
     "PRICE_HISTORY": "Price History",
     "NO_HISTORY": "No price history yet.",
-    "NOT_FOUND": "Product not found."
+    "NOT_FOUND": "Product not found.",
+    "CREATE_TITLE": "Create New Product",
+    "NAME": "Product Name",
+    "BARCODE": "Barcode",
+    "CATEGORY": "Category",
+    "UNIT_TYPE": "Unit Type"
+  },
+  "SUPERMARKET": {
+    "CREATE_TITLE": "Add Supermarket",
+    "NAME": "Supermarket Name"
+  },
+  "COMMON": {
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "OK": "OK"
   }
 }

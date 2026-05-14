@@ -7,10 +7,7 @@ export interface Product {
   id: string;
   barcode: string;
   name: string;
-  unit_type?: string;
-  category?: string;
   created_at?: string;
-  updated_at?: string;
 }
 
 @Injectable({

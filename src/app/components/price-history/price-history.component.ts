@@ -14,10 +14,11 @@ Chart.register(...registerables);
 
 export interface Purchase {
   id: string;
+  product_id: string;
   product_barcode: string;
   supermarket_id: string;
-  purchased_at: string;
   price: number;
+  purchased_at: string;
   supermarket?: { name: string };
 }
 
@@ -36,6 +37,7 @@ export interface Purchase {
 })
 export class PriceHistoryComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input({ required: true }) barcode!: string;
+  @Input() productId?: string;
   @ViewChild('priceChart') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
   purchases: Purchase[] = [];
@@ -63,13 +65,18 @@ export class PriceHistoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
   loadPurchases(): void {
     this.isLoading = true;
+    const query = this.supabaseService.client
+      .from('Purchases')
+      .select('*, supermarket:Supermarkets(name)');
+
+    if (this.productId) {
+      query.eq('product_id', this.productId);
+    } else {
+      query.eq('product_barcode', this.barcode);
+    }
+
     from(
-      this.supabaseService.client
-        .from('Purchases')
-        .select('*, supermarket:Supermarkets(name)')
-        .eq('product_barcode', this.barcode)
-        .order('purchased_at', { ascending: false })
-        .limit(20)
+      query.order('purchased_at', { ascending: false }).limit(20)
     ).pipe(
       map(res => {
         if (res.error) { console.error(res.error); return []; }
@@ -78,7 +85,8 @@ export class PriceHistoryComponent implements OnInit, OnDestroy, AfterViewInit {
     ).subscribe(data => {
       this.purchases = data;
       this.isLoading = false;
-      this.updateChart();
+      // Use setTimeout to allow Angular to render the canvas before initializing the chart
+      setTimeout(() => this.updateChart(), 0);
     });
   }
 

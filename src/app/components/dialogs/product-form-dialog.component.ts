@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { BarcodeScanDialogComponent } from './barcode-scan-dialog.component';
 import { ProductService, Product } from '../../services/product/product.service';
 
 @Component({
@@ -18,6 +20,7 @@ import { ProductService, Product } from '../../services/product/product.service'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     TranslateModule
   ],
   template: `
@@ -32,19 +35,10 @@ import { ProductService, Product } from '../../services/product/product.service'
         <mat-form-field appearance="outline">
           <mat-label>{{ 'PRODUCT.BARCODE' | translate }}</mat-label>
           <input matInput formControlName="barcode" placeholder="Barcode" />
+          <button mat-icon-button matSuffix (click)="openScanner()" type="button">
+            <mat-icon>qr_code_scanner</mat-icon>
+          </button>
         </mat-form-field>
-
-        <div class="row">
-          <mat-form-field appearance="outline">
-            <mat-label>{{ 'PRODUCT.CATEGORY' | translate }}</mat-label>
-            <input matInput formControlName="category" placeholder="Category" />
-          </mat-form-field>
-
-          <mat-form-field appearance="outline">
-            <mat-label>{{ 'PRODUCT.UNIT_TYPE' | translate }}</mat-label>
-            <input matInput formControlName="unit_type" placeholder="Unit (e.g. kg, L, pack)" />
-          </mat-form-field>
-        </div>
       </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
@@ -64,14 +58,6 @@ import { ProductService, Product } from '../../services/product/product.service'
       padding-top: 0.5rem;
       min-width: 300px;
     }
-    .row {
-      display: flex;
-      gap: 1rem;
-      @media (max-width: 480px) {
-        flex-direction: column;
-        gap: 0;
-      }
-    }
     mat-form-field { width: 100%; }
   `]
 })
@@ -82,14 +68,26 @@ export class ProductFormDialogComponent {
   constructor(
     private fb: FormBuilder,
     private productService: ProductService,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<ProductFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { barcode?: string }
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      barcode: [data?.barcode || '', Validators.required],
-      category: [''],
-      unit_type: ['']
+      barcode: [data?.barcode || '', Validators.required]
+    });
+  }
+
+  openScanner(): void {
+    const scanRef = this.dialog.open(BarcodeScanDialogComponent, {
+      width: '400px',
+      maxWidth: '90vw'
+    });
+
+    scanRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.productForm.patchValue({ barcode: result });
+      }
     });
   }
 

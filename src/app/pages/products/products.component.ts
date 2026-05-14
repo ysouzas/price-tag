@@ -51,12 +51,6 @@ import { Product, ProductService } from '../../services/product/product.service'
                       <mat-icon>qr_code</mat-icon>
                       {{ product.barcode }}
                     </span>
-                    @if (product.category) {
-                      <span class="category-badge">
-                        <mat-icon>category</mat-icon>
-                        {{ product.category }}
-                      </span>
-                    }
                   </div>
                 </div>
                 <mat-icon class="chevron">chevron_right</mat-icon>
