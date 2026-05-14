@@ -7,6 +7,7 @@ export interface Product {
   id: string;
   barcode: string;
   name: string;
+  image_url?: string;
   created_at?: string;
 }
 

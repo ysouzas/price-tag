@@ -72,6 +72,7 @@
     "CREATE_TITLE": "Create New Product",
     "NAME": "Product Name",
     "BARCODE": "Barcode",
+    "IMAGE_URL": "Image URL",
     "CATEGORY": "Category",
     "UNIT_TYPE": "Unit Type"
   },

@@ -8,22 +8,26 @@
   } @else if (product) {
     <!-- Product Header Section -->
     <header class="product-header">
-      <div class="product-icon-wrapper">
-        <mat-icon>inventory_2</mat-icon>
+      <div class="product-hero">
+        @if (product.image_url) {
+          <img [src]="product.image_url" [alt]="product.name" class="hero-img" />
+        } @else {
+          <div class="hero-fallback">
+            <mat-icon>inventory_2</mat-icon>
+          </div>
+        }
       </div>
-      <div class="product-title-group">
+      <div class="header-content">
+        <div class="product-title-group">
         <h1 class="product-name">{{ product.name }}</h1>
         <div class="product-meta-row">
           <span class="barcode-badge">
             <mat-icon>qr_code</mat-icon>
             {{ product.barcode }}
           </span>
-          <span class="barcode-badge">
-            <mat-icon>qr_code</mat-icon>
-            {{ product.barcode }}
-          </span>
         </div>
       </div>
+    </div>
     </header>
 
     <div class="details-grid">
@@ -65,7 +69,7 @@
 
       <!-- History Section -->
       <section class="history-section">
-        <app-price-history [barcode]="barcode" [productId]="product?.id" />
+        <app-price-history [barcode]="barcode" [productId]="product.id" />
       </section>
     </div>
   } @else {

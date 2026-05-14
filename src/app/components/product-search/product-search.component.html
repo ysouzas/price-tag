@@ -29,6 +29,13 @@
       <div class="product-grid">
         @for (product of searchResults; track product.id) {
           <div class="product-card premium-card" [class.selected]="selectedProduct?.id === product.id" (click)="selectProduct(product)">
+            <div class="product-visual">
+              @if (product.image_url) {
+                <img [src]="product.image_url" [alt]="product.name" />
+              } @else {
+                <mat-icon>inventory_2</mat-icon>
+              }
+            </div>
             <div class="product-info">
               <h4 class="product-name">{{ product.name }}</h4>
               <div class="product-meta">

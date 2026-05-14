@@ -39,6 +39,12 @@ import { ProductService, Product } from '../../services/product/product.service'
             <mat-icon>qr_code_scanner</mat-icon>
           </button>
         </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'PRODUCT.IMAGE_URL' | translate }}</mat-label>
+          <input matInput formControlName="image_url" placeholder="https://example.com/image.jpg" />
+          <mat-icon matSuffix>image</mat-icon>
+        </mat-form-field>
       </form>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
@@ -74,7 +80,8 @@ export class ProductFormDialogComponent {
   ) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      barcode: [data?.barcode || '', Validators.required]
+      barcode: [data?.barcode || '', Validators.required],
+      image_url: ['']
     });
   }
 

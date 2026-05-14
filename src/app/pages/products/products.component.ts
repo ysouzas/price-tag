@@ -44,13 +44,22 @@ import { Product, ProductService } from '../../services/product/product.service'
           @for (product of products; track product.id) {
             <mat-card class="premium-card product-card" [routerLink]="['/product', product.barcode]">
               <mat-card-content>
-                <div class="product-info">
-                  <h3 class="product-name">{{ product.name }}</h3>
-                  <div class="product-meta">
-                    <span class="barcode-badge">
-                      <mat-icon>qr_code</mat-icon>
-                      {{ product.barcode }}
-                    </span>
+                <div class="product-main">
+                  <div class="product-image-thumb">
+                    @if (product.image_url) {
+                      <img [src]="product.image_url" [alt]="product.name" />
+                    } @else {
+                      <mat-icon>inventory_2</mat-icon>
+                    }
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <div class="product-meta">
+                      <span class="barcode-badge">
+                        <mat-icon>qr_code</mat-icon>
+                        {{ product.barcode }}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <mat-icon class="chevron">chevron_right</mat-icon>
@@ -90,6 +99,24 @@ import { Product, ProductService } from '../../services/product/product.service'
         align-items: center;
         padding: 1.25rem !important;
       }
+    }
+    .product-main {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .product-image-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: rgba(var(--primary-rgb), 0.05);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      img { width: 100%; height: 100%; object-fit: cover; }
+      mat-icon { font-size: 24px; width: 24px; height: 24px; color: var(--primary-color); opacity: 0.5; }
     }
     .product-info {
       .product-name { margin: 0 0 0.5rem; font-weight: 700; }
