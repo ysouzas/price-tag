@@ -1,11 +1,20 @@
 import { Routes } from '@angular/router';
-import { FrontPageComponent } from './pages/front-page/front-page.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: FrontPageComponent,
+    loadComponent: () =>
+      import('./pages/barcode-home/barcode-home.component').then(
+        (m) => m.BarcodeHomeComponent,
+      ),
     pathMatch: 'full',
+  },
+  {
+    path: 'search',
+    loadComponent: () =>
+      import('./pages/front-page/front-page.component').then(
+        (m) => m.FrontPageComponent,
+      ),
   },
   {
     path: 'supermarkets',

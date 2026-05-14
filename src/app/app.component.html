@@ -1,4 +1,6 @@
-<header class="app-header" *ngIf="showBackButton">
-  <app-back-button />
-</header>
+@if (showBackButton) {
+  <header class="app-header">
+    <app-back-button />
+  </header>
+}
 <router-outlet />

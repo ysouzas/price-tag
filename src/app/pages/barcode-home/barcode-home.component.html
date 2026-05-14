@@ -1,0 +1,88 @@
+<div class="barcode-home">
+  <div class="hero">
+    <mat-icon class="hero-icon">qr_code_scanner</mat-icon>
+    <h1 class="hero-title">{{ 'HOME.TITLE' | translate }}</h1>
+    <p class="hero-subtitle">{{ 'HOME.SUBTITLE' | translate }}</p>
+  </div>
+
+  <!-- Manual barcode entry -->
+  <div class="manual-entry">
+    <mat-form-field appearance="outline" class="barcode-field">
+      <mat-label>{{ 'HOME.BARCODE_LABEL' | translate }}</mat-label>
+      <mat-icon matPrefix>tag</mat-icon>
+      <input
+        matInput
+        type="number"
+        inputmode="numeric"
+        [formControl]="barcodeControl"
+        (keyup.enter)="submitBarcode()"
+        placeholder="{{ 'HOME.BARCODE_PLACEHOLDER' | translate }}"
+      />
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="barcodeControl.invalid"
+      (click)="submitBarcode()"
+      class="lookup-btn"
+    >
+      <mat-icon>search</mat-icon>
+      {{ 'HOME.LOOKUP' | translate }}
+    </button>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider">
+    <span>{{ 'HOME.OR' | translate }}</span>
+  </div>
+
+  <!-- Camera Scanner -->
+  <div class="scanner-section">
+    @if (scannerState === 'idle') {
+      <button mat-stroked-button color="primary" (click)="toggleScanner()" class="scan-btn">
+        <mat-icon>photo_camera</mat-icon>
+        {{ 'HOME.SCAN' | translate }}
+      </button>
+    }
+
+    @if (scannerState === 'scanning') {
+      <div class="video-wrapper">
+        <video #videoElement autoplay playsinline class="scanner-video"></video>
+        <canvas #canvasElement class="scanner-canvas"></canvas>
+        <div class="scan-overlay">
+          <div class="scan-target"></div>
+        </div>
+      </div>
+      <button mat-stroked-button color="warn" (click)="toggleScanner()" class="stop-btn">
+        <mat-icon>stop</mat-icon>
+        {{ 'HOME.STOP_SCAN' | translate }}
+      </button>
+    }
+
+    @if (scannerState === 'permission-denied') {
+      <div class="camera-error">
+        <mat-icon color="warn">no_photography</mat-icon>
+        <p>{{ 'HOME.PERMISSION_DENIED' | translate }}</p>
+      </div>
+    }
+
+    @if (scannerState === 'no-camera') {
+      <div class="camera-error">
+        <mat-icon color="warn">videocam_off</mat-icon>
+        <p>{{ 'HOME.NO_CAMERA' | translate }}</p>
+      </div>
+    }
+  </div>
+
+  <!-- Navigation Shortcuts -->
+  <div class="shortcuts-grid">
+    <button mat-ripple class="shortcut-card" [routerLink]="['/search']" [queryParams]="{ tab: 0 }">
+      <mat-icon>inventory_2</mat-icon>
+      <span>{{ 'HOME.PRODUCTS_SHORTCUT' | translate }}</span>
+    </button>
+    <button mat-ripple class="shortcut-card" [routerLink]="['/search']" [queryParams]="{ tab: 1 }">
+      <mat-icon>storefront</mat-icon>
+      <span>{{ 'HOME.SUPERMARKETS_SHORTCUT' | translate }}</span>
+    </button>
+  </div>
+</div>

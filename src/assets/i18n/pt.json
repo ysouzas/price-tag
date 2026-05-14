@@ -43,6 +43,20 @@
     "TITLE": "Produtos",
     "DESCRIPTION": "Gerenciar produtos em breve..."
   },
+  "HOME": {
+    "TITLE": "Etiqueta de Preço",
+    "SUBTITLE": "Escanear ou digitar um código de barras para encontrar um produto",
+    "BARCODE_LABEL": "Código de Barras",
+    "BARCODE_PLACEHOLDER": "ex. 5901234123457",
+    "LOOKUP": "Procurar Produto",
+    "OR": "ou",
+    "SCAN": "Escanear com Câmera",
+    "STOP_SCAN": "Parar Escaneamento",
+    "PRODUCTS_SHORTCUT": "Produtos",
+    "SUPERMARKETS_SHORTCUT": "Supermercados",
+    "PERMISSION_DENIED": "Acesso à câmera foi negado. Permita o acesso à câmera nas configurações do navegador.",
+    "NO_CAMERA": "Nenhuma câmera disponível neste dispositivo."
+  },
   "PRODUCT": {
     "ADD_PRICE": "Adicionar Preço",
     "SUPERMARKET": "Supermercado",

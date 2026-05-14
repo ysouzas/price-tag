@@ -39,6 +39,11 @@ export class PriceHistoryComponent implements OnInit {
   constructor(private supabaseService: SupabaseService) {}
 
   ngOnInit(): void {
+    this.loadPurchases();
+  }
+
+  loadPurchases(): void {
+    this.isLoading = true;
     from(
       this.supabaseService.client
         .from('Purchases')

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -39,6 +39,7 @@ import { SupabaseService } from '../../core/services/supabase.service';
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
+  @ViewChild(PriceHistoryComponent) priceHistory!: PriceHistoryComponent;
   product: Product | null = null;
   supermarkets: Supermarket[] = [];
   priceForm!: FormGroup;
@@ -95,8 +96,7 @@ export class ProductDetailsComponent implements OnInit {
       } else {
         this.priceForm.reset();
         this.snackBar.open('Price saved!', 'OK', { duration: 2000 });
-        // Re-render history by toggling barcode (trick to force @Input refresh)
-        const b = this.barcode;
+        this.priceHistory.loadPurchases();
       }
     });
   }

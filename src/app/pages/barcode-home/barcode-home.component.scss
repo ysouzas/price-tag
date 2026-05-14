@@ -1,0 +1,197 @@
+.barcode-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.25rem;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  gap: 1.5rem;
+}
+
+.hero {
+  text-align: center;
+  padding-top: 1rem;
+
+  .hero-icon {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+}
+
+.manual-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 400px;
+
+  .barcode-field {
+    width: 100%;
+  }
+
+  .lookup-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 1rem;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  gap: 1rem;
+  color: rgba(0, 0, 0, 0.4);
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+  }
+}
+
+.scanner-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+
+  .scan-btn,
+  .stop-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 1rem;
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 4/3;
+
+  .scanner-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .scanner-canvas {
+    display: none;
+  }
+
+  .scan-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .scan-target {
+      width: 65%;
+      aspect-ratio: 1;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+.camera-error {
+  text-align: center;
+  opacity: 0.75;
+
+  mat-icon {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 1rem;
+}
+
+.shortcut-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: var(--surface-color, #fff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 0.5rem;
+  color: inherit;
+  font-family: inherit;
+  outline: none;
+
+  mat-icon {
+    font-size: 1.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--primary-color);
+  }
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    background: rgba(var(--primary-rgb), 0.04);
+    border-color: var(--primary-color);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.theme-dark {
+  .shortcut-card {
+    background: #1e1e1e;
+    border-color: rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}

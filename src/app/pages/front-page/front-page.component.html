@@ -1,5 +1,9 @@
 <div class="front-page-container">
-  <mat-tab-group mat-stretch-tabs="false" animationDuration="200ms">
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    animationDuration="200ms"
+    [(selectedIndex)]="selectedIndex"
+  >
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon class="tab-icon">search</mat-icon>

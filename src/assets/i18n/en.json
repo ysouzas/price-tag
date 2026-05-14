@@ -43,6 +43,20 @@
     "TITLE": "Products",
     "DESCRIPTION": "Manage products coming soon..."
   },
+  "HOME": {
+    "TITLE": "Price Tag",
+    "SUBTITLE": "Scan or enter a barcode to find a product",
+    "BARCODE_LABEL": "Barcode",
+    "BARCODE_PLACEHOLDER": "e.g. 5901234123457",
+    "LOOKUP": "Look Up Product",
+    "OR": "or",
+    "SCAN": "Scan with Camera",
+    "STOP_SCAN": "Stop Scanning",
+    "PRODUCTS_SHORTCUT": "Products",
+    "SUPERMARKETS_SHORTCUT": "Supermarkets",
+    "PERMISSION_DENIED": "Camera access was denied. Please allow camera access in your browser settings.",
+    "NO_CAMERA": "No camera available on this device."
+  },
   "PRODUCT": {
     "ADD_PRICE": "Add Price",
     "SUPERMARKET": "Supermarket",
