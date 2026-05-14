@@ -1,20 +1,33 @@
-<div class="supermarket-search">
-  <mat-form-field appearance="outline" class="search-field">
-    <mat-label>{{ 'SEARCH.SUPERMARKETS' | translate }}</mat-label>
-    <mat-icon matPrefix>store</mat-icon>
-    <input matInput [formControl]="searchControl" />
-  </mat-form-field>
+<div class="supermarket-search animate-fade-in">
+  <div class="search-box">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-icon matPrefix>store</mat-icon>
+      <mat-label>{{ 'SEARCH.SUPERMARKETS' | translate }}</mat-label>
+      <input matInput [formControl]="searchControl" placeholder="Search supermarkets..." />
+    </mat-form-field>
+  </div>
 
-  <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" diameter="36" />
-
-  <mat-list *ngIf="!isLoading">
-    <mat-list-item *ngFor="let market of filteredSupermarkets">
-      <mat-icon matListItemIcon>store_mall_directory</mat-icon>
-      <span matListItemTitle>{{ market.name }}</span>
-    </mat-list-item>
-
-    <p *ngIf="filteredSupermarkets.length === 0" class="no-results">
-      {{ 'SEARCH.NO_RESULTS' | translate }}
-    </p>
-  </mat-list>
+  @if (isLoading) {
+    <div class="skeleton-list">
+      @for (i of [1,2,3]; track i) {
+        <div class="skeleton card-skeleton"></div>
+      }
+    </div>
+  } @else {
+    <div class="market-grid">
+      @for (market of filteredSupermarkets; track market.id) {
+        <div class="market-card premium-card">
+          <div class="market-icon">
+            <mat-icon>storefront</mat-icon>
+          </div>
+          <span class="market-name">{{ market.name }}</span>
+        </div>
+      } @empty {
+        <div class="no-results">
+          <mat-icon>location_off</mat-icon>
+          <p>{{ 'SEARCH.NO_RESULTS' | translate }}</p>
+        </div>
+      }
+    </div>
+  }
 </div>

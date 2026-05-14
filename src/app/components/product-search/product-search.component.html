@@ -1,95 +1,69 @@
-<div class="product-search-container">
-  <mat-card class="search-card">
-    <mat-card-header>
-      <mat-card-title>{{ "SEARCH.TITLE" | translate }}</mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-      <!-- Search Input -->
-      <div class="search-input-section">
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>{{ "SEARCH.PLACEHOLDER" | translate }}</mat-label>
-          <input
-            matInput
-            type="text"
-            [formControl]="searchControl"
-            placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
-          />
-          <button
-            mat-icon-button
-            matSuffix
-            *ngIf="searchControl.value"
-            (click)="clearSearch()"
-            type="button"
-          >
-            <mat-icon>close</mat-icon>
-          </button>
-          <mat-icon matPrefix>search</mat-icon>
-        </mat-form-field>
-      </div>
-
-      <!-- Loading State -->
-      <div class="loading-state" *ngIf="isSearching">
-        <mat-spinner diameter="40"></mat-spinner>
-        <p>{{ "SEARCH.SEARCHING" | translate }}</p>
-      </div>
-
-      <!-- Search Results -->
-      <div
-        class="results-container"
-        *ngIf="!isSearching && searchResults.length > 0"
-      >
-        <h3>{{ "SEARCH.RESULTS" | translate }} ({{ searchResults.length }})</h3>
-        <div class="product-list">
-          <mat-card
-            *ngFor="let product of searchResults"
-            class="product-card"
-            [class.selected]="selectedProduct?.id === product.id"
-            (click)="selectProduct(product)"
-          >
-            <mat-card-content>
-              <div class="product-info">
-                <h4 class="product-name">{{ product.name }}</h4>
-                <p class="product-category" *ngIf="product.category">
-                  {{ product.category }}
-                </p>
-                <p class="product-barcode">
-                  <strong>{{ "SEARCH.BARCODE" | translate }}:</strong>
-                  {{ product.barcode }}
-                </p>
-              </div>
-              <mat-icon
-                class="select-icon"
-                *ngIf="selectedProduct?.id === product.id"
-              >
-                check_circle
-              </mat-icon>
-            </mat-card-content>
-          </mat-card>
-        </div>
-      </div>
-
-      <!-- No Results -->
-      <div class="no-results" *ngIf="!isSearching && noResultsFound">
-        <mat-icon>search_off</mat-icon>
-        <h3>{{ "SEARCH.NO_RESULTS" | translate }}</h3>
-        <p>{{ "SEARCH.NO_RESULTS_DESC" | translate }}</p>
-        <button mat-raised-button color="primary" (click)="createNewProduct()">
-          {{ "SEARCH.CREATE_NEW" | translate }}
+<div class="product-search-container animate-fade-in">
+  <div class="search-box">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-icon matPrefix>search</mat-icon>
+      <mat-label>{{ "SEARCH.PLACEHOLDER" | translate }}</mat-label>
+      <input
+        matInput
+        type="text"
+        [formControl]="searchControl"
+        placeholder="{{ 'SEARCH.PLACEHOLDER' | translate }}"
+      />
+      @if (searchControl.value) {
+        <button mat-icon-button matSuffix (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
         </button>
-      </div>
+      }
+    </mat-form-field>
+  </div>
 
-      <!-- Empty State -->
-      <div
-        class="empty-state"
-        *ngIf="
-          !isSearching && searchResults.length === 0 && !searchControl.value
-        "
-      >
-        <mat-icon>shopping_search</mat-icon>
-        <h3>{{ "SEARCH.EMPTY_TITLE" | translate }}</h3>
-        <p>{{ "SEARCH.EMPTY_DESC" | translate }}</p>
+  @if (isSearching) {
+    <div class="skeleton-list">
+      @for (i of [1,2,3,4]; track i) {
+        <div class="skeleton card-skeleton"></div>
+      }
+    </div>
+  } @else if (searchResults.length > 0) {
+    <div class="results-section">
+      <h3 class="results-label">{{ "SEARCH.RESULTS" | translate }} ({{ searchResults.length }})</h3>
+      <div class="product-grid">
+        @for (product of searchResults; track product.id) {
+          <div class="product-card premium-card" [class.selected]="selectedProduct?.id === product.id" (click)="selectProduct(product)">
+            <div class="product-info">
+              <h4 class="product-name">{{ product.name }}</h4>
+              <div class="product-meta">
+                @if (product.category) {
+                  <span class="category">{{ product.category }}</span>
+                }
+                <span class="barcode">{{ product.barcode }}</span>
+              </div>
+            </div>
+            @if (selectedProduct?.id === product.id) {
+              <mat-icon class="check-icon">check_circle</mat-icon>
+            }
+          </div>
+        }
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  } @else if (noResultsFound) {
+    <div class="no-results animate-shake">
+      <div class="icon-circle">
+        <mat-icon>search_off</mat-icon>
+      </div>
+      <h3>{{ "SEARCH.NO_RESULTS" | translate }}</h3>
+      <p>{{ "SEARCH.NO_RESULTS_DESC" | translate }}</p>
+      <button mat-flat-button color="primary" (click)="createNewProduct()" class="create-btn">
+        <mat-icon>add</mat-icon>
+        {{ "SEARCH.CREATE_NEW" | translate }}
+      </button>
+    </div>
+  } @else if (!searchControl.value) {
+    <div class="empty-state">
+      <div class="icon-circle">
+        <mat-icon>shopping_cart</mat-icon>
+      </div>
+      <h3>{{ "SEARCH.EMPTY_TITLE" | translate }}</h3>
+      <p>{{ "SEARCH.EMPTY_DESC" | translate }}</p>
+    </div>
+  }
 </div>

@@ -1,22 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { switchMap } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { PriceHistoryComponent } from '../../components/price-history/price-history.component';
+import { SupabaseService } from '../../core/services/supabase.service';
 import { Product, ProductService } from '../../services/product/product.service';
 import { Supermarket, SupermarketService } from '../../services/supermarket/supermarket.service';
-import { PriceHistoryComponent } from '../../components/price-history/price-history.component';
-import { from } from 'rxjs';
-import { SupabaseService } from '../../core/services/supabase.service';
 
 @Component({
   selector: 'app-product-details',
@@ -34,6 +33,7 @@ import { SupabaseService } from '../../core/services/supabase.service';
     MatSnackBarModule,
     TranslateModule,
     PriceHistoryComponent,
+    RouterModule,
   ],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
@@ -83,8 +83,8 @@ export class ProductDetailsComponent implements OnInit {
     const entry = {
       product_barcode: this.barcode,
       supermarket_id,
-      price_at_purchase: parseFloat(price),
-      purchase_date: new Date().toISOString().split('T')[0],
+      price: parseFloat(price),
+      purchased_at: new Date().toISOString().split('T')[0],
     };
 
     from(

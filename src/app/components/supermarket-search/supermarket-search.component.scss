@@ -1,0 +1,84 @@
+.supermarket-search {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.search-box {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg-color);
+  padding: 0.5rem 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.market-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.market-card {
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.2s ease;
+
+  .market-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    mat-icon {
+      font-size: 1.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  .market-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  &:hover {
+    border-color: var(--primary-color);
+    background: rgba(var(--primary-rgb), 0.02);
+    transform: translateX(4px);
+  }
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+
+  mat-icon {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .card-skeleton {
+    height: 64px;
+    border-radius: var(--card-radius);
+  }
+}

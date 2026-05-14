@@ -8,6 +8,7 @@ export const routes: Routes = [
         (m) => m.BarcodeHomeComponent,
       ),
     pathMatch: 'full',
+    data: { animation: 'HomePage' }
   },
   {
     path: 'search',
@@ -15,6 +16,7 @@ export const routes: Routes = [
       import('./pages/front-page/front-page.component').then(
         (m) => m.FrontPageComponent,
       ),
+    data: { animation: 'SearchPage' }
   },
   {
     path: 'supermarkets',
@@ -22,6 +24,7 @@ export const routes: Routes = [
       import('./pages/supermarkets/supermarkets.component').then(
         (m) => m.SupermarketsComponent,
       ),
+    data: { animation: 'SupermarketsPage' }
   },
   {
     path: 'products',
@@ -29,6 +32,7 @@ export const routes: Routes = [
       import('./pages/products/products.component').then(
         (m) => m.ProductsComponent,
       ),
+    data: { animation: 'ProductsPage' }
   },
   {
     path: 'product/:barcode',
@@ -36,5 +40,6 @@ export const routes: Routes = [
       import('./pages/product-details/product-details.component').then(
         (m) => m.ProductDetailsComponent,
       ),
+    data: { animation: 'DetailsPage' }
   },
 ];

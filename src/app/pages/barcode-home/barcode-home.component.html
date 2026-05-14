@@ -1,6 +1,8 @@
 <div class="barcode-home">
-  <div class="hero">
-    <mat-icon class="hero-icon">qr_code_scanner</mat-icon>
+  <div class="hero animate-fade-in">
+    <div class="icon-blob">
+      <mat-icon class="hero-icon">qr_code_scanner</mat-icon>
+    </div>
     <h1 class="hero-title">{{ 'HOME.TITLE' | translate }}</h1>
     <p class="hero-subtitle">{{ 'HOME.SUBTITLE' | translate }}</p>
   </div>
@@ -67,7 +69,7 @@
     }
 
     @if (scannerState === 'no-camera') {
-      <div class="camera-error">
+      <div class="camera-error animate-shake">
         <mat-icon color="warn">videocam_off</mat-icon>
         <p>{{ 'HOME.NO_CAMERA' | translate }}</p>
       </div>
