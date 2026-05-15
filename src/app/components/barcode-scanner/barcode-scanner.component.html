@@ -11,16 +11,8 @@
           <div class="video-container">
             <zxing-scanner
               [autostart]="isScanning"
-              [allowCameraSwitch]="true"
-              [formats]="[
-                'EAN_13',
-                'EAN_8',
-                'UPC_A',
-                'UPC_E',
-                'CODE_128',
-                'QR_CODE',
-              ]"
-              (codeResultChange)="onCodeResult($event)"
+              [formats]="allowedFormats"
+              (scanSuccess)="onCodeResult($event)"
               (permissionResponse)="onCameraPermissionError($event)"
               (scannerError)="onScannerError($event)"
             >

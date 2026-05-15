@@ -1,5 +1,4 @@
-
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -14,12 +13,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxScannerQrcodeModule } from '@zxing/ngx-scanner';
 import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
+import { BarcodeFormat } from '@zxing/library';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @Component({
-    selector: 'app-barcode-scanner',
-    imports: [
+  selector: 'app-barcode-scanner',
+  imports: [
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -29,10 +29,10 @@ import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service
     MatIconModule,
     MatProgressSpinnerModule,
     TranslateModule,
-    NgxScannerQrcodeModule
-],
-    templateUrl: './barcode-scanner.component.html',
-    styleUrls: ['./barcode-scanner.component.scss']
+    ZXingScannerModule,
+  ],
+  templateUrl: './barcode-scanner.component.html',
+  styleUrls: ['./barcode-scanner.component.scss'],
 })
 export class BarcodeScannerComponent implements OnInit, OnDestroy {
   form!: FormGroup;
@@ -43,6 +43,13 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
   detectedBarcode: string | null = null;
   lastScannedBarcode: string | null = null;
   cameraError: string | null = null;
+
+  allowedFormats = [
+    BarcodeFormat.QR_CODE,
+    BarcodeFormat.EAN_13,
+    BarcodeFormat.CODE_128,
+    BarcodeFormat.DATA_MATRIX /*, ...*/,
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -157,7 +164,5 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
     if (this.isScanning) {
       this.stopScanning();
     }
-  }
-}
   }
 }
