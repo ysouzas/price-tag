@@ -10,12 +10,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { PriceHistoryComponent } from '@components/price-history/price-history.component';
+import { SupabaseService } from '@core/services/supabase.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { Product, ProductService } from '@services/product/product.service';
+import { Supermarket, SupermarketService } from '@services/supermarket/supermarket.service';
 import { from } from 'rxjs';
-import { PriceHistoryComponent } from '../../components/price-history/price-history.component';
-import { SupabaseService } from '../../core/services/supabase.service';
-import { Product, ProductService } from '../../services/product/product.service';
-import { Supermarket, SupermarketService } from '../../services/supermarket/supermarket.service';
 
 @Component({
   selector: 'app-product-details',

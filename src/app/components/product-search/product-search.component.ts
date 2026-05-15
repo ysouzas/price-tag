@@ -18,7 +18,7 @@ import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProductFormDialogComponent } from '../dialogs/product-form-dialog.component';
-import { Product, ProductService } from '../../services/product/product.service';
+import { Product, ProductService } from '@services/product/product.service';
 
 @Component({
   selector: 'app-product-search',

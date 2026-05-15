@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { BarcodeScanDialogComponent } from './barcode-scan-dialog.component';
-import { ProductService, Product } from '../../services/product/product.service';
+import { ProductService, Product } from '@services/product/product.service';
 
 @Component({
   selector: 'app-product-form-dialog',

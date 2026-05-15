@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
-import { BarcodeScannerService } from '../../services/barcode/barcode-scanner.service';
+import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
 
 @Component({
   selector: 'app-barcode-scanner',

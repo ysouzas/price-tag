@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { BarcodeScannerService } from '../../services/barcode/barcode-scanner.service';
+import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
 
 @Component({
   selector: 'app-barcode-scan-dialog',

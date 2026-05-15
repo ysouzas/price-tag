@@ -4,7 +4,7 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./pages/barcode-home/barcode-home.component').then(
+      import('@pages/barcode-home/barcode-home.component').then(
         (m) => m.BarcodeHomeComponent,
       ),
     pathMatch: 'full',
@@ -13,7 +13,7 @@ export const routes: Routes = [
   {
     path: 'search',
     loadComponent: () =>
-      import('./pages/front-page/front-page.component').then(
+      import('@pages/front-page/front-page.component').then(
         (m) => m.FrontPageComponent,
       ),
     data: { animation: 'SearchPage' }
@@ -21,7 +21,7 @@ export const routes: Routes = [
   {
     path: 'supermarkets',
     loadComponent: () =>
-      import('./pages/supermarkets/supermarkets.component').then(
+      import('@pages/supermarkets/supermarkets.component').then(
         (m) => m.SupermarketsComponent,
       ),
     data: { animation: 'SupermarketsPage' }
@@ -29,7 +29,7 @@ export const routes: Routes = [
   {
     path: 'products',
     loadComponent: () =>
-      import('./pages/products/products.component').then(
+      import('@pages/products/products.component').then(
         (m) => m.ProductsComponent,
       ),
     data: { animation: 'ProductsPage' }
@@ -37,7 +37,7 @@ export const routes: Routes = [
   {
     path: 'product/:barcode',
     loadComponent: () =>
-      import('./pages/product-details/product-details.component').then(
+      import('@pages/product-details/product-details.component').then(
         (m) => m.ProductDetailsComponent,
       ),
     data: { animation: 'DetailsPage' }

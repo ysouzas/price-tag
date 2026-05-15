@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SupabaseService } from '../../core/services/supabase.service';
+import { SupabaseService } from '@core/services/supabase.service';
 
 export interface Supermarket {
   id: string;

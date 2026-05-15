@@ -4,7 +4,7 @@ import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
-import { BackButtonComponent } from './components/back-button/back-button.component';
+import { BackButtonComponent } from '@components/back-button/back-button.component';
 
 const slideInAnimation = trigger('routeAnimations', [
   transition('* <=> *', [

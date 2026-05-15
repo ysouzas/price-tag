@@ -6,7 +6,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule } from '@ngx-translate/core';
-import { SupermarketService, Supermarket } from '../../services/supermarket/supermarket.service';
+import { SupermarketService, Supermarket } from '@services/supermarket/supermarket.service';
 
 @Component({
   selector: 'app-supermarket-form-dialog',

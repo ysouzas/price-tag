@@ -7,8 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductFormDialogComponent } from '../../components/dialogs/product-form-dialog.component';
-import { Product, ProductService } from '../../services/product/product.service';
+import { ProductFormDialogComponent } from '@components/dialogs/product-form-dialog.component';
+import { Product, ProductService } from '@services/product/product.service';
 
 @Component({
   selector: 'app-products',

@@ -4,8 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
-import { ProductSearchComponent } from '../../components/product-search/product-search.component';
-import { SupermarketSearchComponent } from '../../components/supermarket-search/supermarket-search.component';
+import { ProductSearchComponent } from '@components/product-search/product-search.component';
+import { SupermarketSearchComponent } from '@components/supermarket-search/supermarket-search.component';
 
 @Component({
   selector: 'app-front-page',

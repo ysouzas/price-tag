@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
 import { SupermarketFormDialogComponent } from '../../components/dialogs/supermarket-form-dialog.component';
-import { Supermarket, SupermarketService } from '../../services/supermarket/supermarket.service';
+import { Supermarket, SupermarketService } from '@services/supermarket/supermarket.service';
 
 @Component({
   selector: 'app-supermarkets',

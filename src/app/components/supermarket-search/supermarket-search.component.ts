@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { Supermarket, SupermarketService } from '../../services/supermarket/supermarket.service';
+import { Supermarket, SupermarketService } from '@services/supermarket/supermarket.service';
 
 @Component({
   selector: 'app-supermarket-search',

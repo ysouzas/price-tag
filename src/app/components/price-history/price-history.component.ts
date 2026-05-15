@@ -7,7 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { SupabaseService } from '../../core/services/supabase.service';
+import { SupabaseService } from '@core/services/supabase.service';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);

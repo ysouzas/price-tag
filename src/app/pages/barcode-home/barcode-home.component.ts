@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { BarcodeScannerService } from '../../services/barcode/barcode-scanner.service';
+import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
 
 type ScannerState = 'idle' | 'scanning' | 'permission-denied' | 'no-camera';
 
