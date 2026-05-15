@@ -5,20 +5,28 @@
     </mat-card-header>
 
     <mat-card-content>
-      <!-- Camera Section -->
+      <!-- Camera Section with ZXing Scanner -->
       <div
         class="camera-section"
         *ngIf="isCameraAvailable && !cameraPermissionDenied && scanningActive"
       >
         <div class="video-container">
-          <video
-            #videoElement
-            playsinline
-            autoplay
-            muted
-            class="video-element"
-          ></video>
-          <canvas #canvasElement style="display: none"></canvas>
+          <zxing-scanner
+            [autostart]="isScanning"
+            [allowCameraSwitch]="true"
+            [formats]="[
+              'EAN_13',
+              'EAN_8',
+              'UPC_A',
+              'UPC_E',
+              'CODE_128',
+              'QR_CODE',
+            ]"
+            (codeResultChange)="onCodeResult($event)"
+            (permissionResponse)="onCameraPermissionError($event)"
+            (scannerError)="onScannerError($event)"
+          >
+          </zxing-scanner>
 
           <div class="scanning-overlay">
             <div class="scan-guides"></div>
@@ -55,19 +63,10 @@
         </div>
       </div>
 
-      <!-- Camera Permission Denied -->
-      <div class="permission-denied" *ngIf="cameraPermissionDenied">
-        <mat-icon>camera_off</mat-icon>
-        <p>{{ "SCANNER.PERMISSION_DENIED" | translate }}</p>
-      </div>
-
-      <!-- Camera Not Available -->
-      <div
-        class="camera-not-available"
-        *ngIf="!isCameraAvailable && !cameraPermissionDenied"
-      >
-        <mat-icon>videocam_off</mat-icon>
-        <p>{{ "SCANNER.NO_CAMERA" | translate }}</p>
+      <!-- Camera Error Section -->
+      <div class="camera-error" *ngIf="cameraError">
+        <mat-icon>error_outline</mat-icon>
+        <p>{{ cameraError }}</p>
       </div>
 
       <!-- Manual Barcode Input -->

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxScannerQrcodeModule } from '@zxing/ngx-scanner';
 import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
 
 @Component({
@@ -30,14 +31,12 @@ import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service
     MatIconModule,
     MatProgressSpinnerModule,
     TranslateModule,
+    NgxScannerQrcodeModule,
   ],
   templateUrl: './barcode-scanner.component.html',
   styleUrls: ['./barcode-scanner.component.scss'],
 })
-export class BarcodeScannerComponent implements OnInit {
-  @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
-  @ViewChild('canvasElement') canvasElement!: ElementRef<HTMLCanvasElement>;
-
+export class BarcodeScannerComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   isScanning = false;
   isCameraAvailable = false;
@@ -45,6 +44,7 @@ export class BarcodeScannerComponent implements OnInit {
   scanningActive = false;
   detectedBarcode: string | null = null;
   lastScannedBarcode: string | null = null;
+  cameraError: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -65,83 +65,54 @@ export class BarcodeScannerComponent implements OnInit {
   private checkCameraAvailability(): void {
     this.isCameraAvailable = this.barcodeScannerService.isCameraAvailable();
     if (this.isCameraAvailable) {
-      this.requestCameraPermission();
-    }
-  }
-
-  private requestCameraPermission(): void {
-    this.barcodeScannerService
-      .requestCameraPermission()
-      .then(() => {
-        this.initializeCamera();
-      })
-      .catch((error) => {
-        console.error('Camera permission denied:', error);
-        this.cameraPermissionDenied = true;
-      });
-  }
-
-  private initializeCamera(): void {
-    if (this.videoElement && this.isCameraAvailable) {
-      this.barcodeScannerService
-        .initializeCamera(this.videoElement.nativeElement)
-        .then(() => {
-          this.scanningActive = true;
-          this.startScanning();
-        })
-        .catch((error) => {
-          console.error('Failed to initialize camera:', error);
-          this.isCameraAvailable = false;
-        });
+      this.startScanning();
     }
   }
 
   startScanning(): void {
-    if (!this.videoElement || !this.canvasElement) {
-      return;
+    if (this.isCameraAvailable && !this.isScanning) {
+      this.isScanning = true;
+      this.scanningActive = true;
+      this.cameraError = null;
     }
-
-    this.isScanning = true;
-    const video = this.videoElement.nativeElement;
-    const canvas = this.canvasElement.nativeElement;
-    const context = canvas.getContext('2d');
-
-    if (!context) {
-      return;
-    }
-
-    const scanFrame = () => {
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-        this.barcodeScannerService
-          .detectBarcode(canvas)
-          .then((barcode) => {
-            if (barcode && barcode !== this.lastScannedBarcode) {
-              this.detectedBarcode = barcode;
-              this.lastScannedBarcode = barcode;
-              this.playSuccessSound();
-              this.form.patchValue({ manualBarcode: barcode });
-            }
-          })
-          .catch((error) => {
-            console.debug('Barcode detection attempt:', error);
-          });
-      }
-
-      if (this.isScanning) {
-        requestAnimationFrame(scanFrame);
-      }
-    };
-
-    scanFrame();
   }
 
   stopScanning(): void {
     this.isScanning = false;
-    this.barcodeScannerService.stopCamera();
+    this.scanningActive = false;
+  }
+
+  /**
+   * Handle barcode detection result from zxing-scanner component
+   */
+  onCodeResult(result: string): void {
+    if (result && result !== this.lastScannedBarcode) {
+      this.detectedBarcode = result;
+      this.lastScannedBarcode = result;
+      this.playSuccessSound();
+      this.form.patchValue({ manualBarcode: result });
+    }
+  }
+
+  /**
+   * Handle camera permission errors
+   */
+  onCameraPermissionError(error: any): void {
+    console.error('Camera permission error:', error);
+    this.cameraPermissionDenied = true;
+    this.isScanning = false;
+    this.scanningActive = false;
+    this.cameraError = error?.message || 'Camera permission denied';
+  }
+
+  /**
+   * Handle general scanner errors
+   */
+  onScannerError(error: any): void {
+    console.error('Scanner error:', error);
+    this.cameraError = error?.message || 'Camera unavailable';
+    this.isScanning = false;
+    this.scanningActive = false;
   }
 
   onSubmitBarcode(): void {
@@ -188,5 +159,7 @@ export class BarcodeScannerComponent implements OnInit {
     if (this.isScanning) {
       this.stopScanning();
     }
+  }
+}
   }
 }
