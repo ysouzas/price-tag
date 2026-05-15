@@ -27,15 +27,6 @@ $custom-typography: mat.define-typography-config(
   --card-radius: 16px;
 }
 
-.theme-dark {
-  --bg-color: #0f172a; // Slate 900
-  --surface-color: #1e293b; // Slate 800
-  --text-color: #f8fafc; // Slate 50
-  --text-muted: #94a3b8; // Slate 400
-  --border-color: rgba(255, 255, 255, 0.1);
-  --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-}
-
 // Material Theming
 $custom-primary: mat.define-palette(mat.$indigo-palette, 500);
 $custom-accent: mat.define-palette(mat.$amber-palette, 500);
@@ -59,6 +50,13 @@ $custom-dark-theme: mat.define-dark-theme((
 @include mat.all-component-themes($custom-light-theme);
 
 .theme-dark {
+  --bg-color: #0a0b10; // Deeper dark
+  --surface-color: #161821; // Modern dark surface
+  --text-color: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --card-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  
   @include mat.all-component-colors($custom-dark-theme);
 }
 

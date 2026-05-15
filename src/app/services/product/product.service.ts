@@ -18,6 +18,7 @@ export class ProductService {
   constructor(private supabaseService: SupabaseService) {}
 
   searchByName(query: string): Observable<Product[]> {
+    debugger
     return from(
       this.supabaseService.client
         .from('Products')
@@ -26,6 +27,7 @@ export class ProductService {
         .limit(50),
     ).pipe(
       map((response) => {
+        debugger
         if (response.error) {
           console.error('Search error:', response.error);
           return [];
