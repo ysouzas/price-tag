@@ -84,7 +84,6 @@ Thumbs.db
 /.github/prompts
 /.github/skills
 /src/environments/environment.development.ts
-/src/environments/environment.ts
 /proposal_instructions.json
 /specs_instructions.json
 /status.json
