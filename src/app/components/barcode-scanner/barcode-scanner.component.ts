@@ -123,7 +123,6 @@ export class BarcodeScannerComponent implements OnInit {
               this.detectedBarcode = barcode;
               this.lastScannedBarcode = barcode;
               this.playSuccessSound();
-              // Update form with detected barcode
               this.form.patchValue({ manualBarcode: barcode });
             }
           })
@@ -154,8 +153,6 @@ export class BarcodeScannerComponent implements OnInit {
     if (barcode) {
       this.detectedBarcode = barcode;
       this.playSuccessSound();
-      // Trigger product lookup
-      console.log('Looking up product for barcode:', barcode);
     }
   }
 
