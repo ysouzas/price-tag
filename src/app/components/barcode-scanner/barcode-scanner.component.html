@@ -7,25 +7,23 @@
     <mat-card-content>
       <!-- Camera Section with ZXing Scanner -->
       @if (isCameraAvailable && !cameraPermissionDenied && scanningActive) {
-        <div
-          class="camera-section"
-          >
+        <div class="camera-section">
           <div class="video-container">
             <zxing-scanner
               [autostart]="isScanning"
               [allowCameraSwitch]="true"
-            [formats]="[
-              'EAN_13',
-              'EAN_8',
-              'UPC_A',
-              'UPC_E',
-              'CODE_128',
-              'QR_CODE',
-            ]"
+              [formats]="[
+                'EAN_13',
+                'EAN_8',
+                'UPC_A',
+                'UPC_E',
+                'CODE_128',
+                'QR_CODE',
+              ]"
               (codeResultChange)="onCodeResult($event)"
               (permissionResponse)="onCameraPermissionError($event)"
               (scannerError)="onScannerError($event)"
-              >
+            >
             </zxing-scanner>
             <div class="scanning-overlay">
               <div class="scan-guides"></div>
@@ -41,97 +39,93 @@
             <div class="detected-barcode">
               <mat-icon>check_circle</mat-icon>
               <span
-                >{{ "SCANNER.DETECTED" | translate }}: {{ detectedBarcode }}</span
-                >
-              </div>
-            }
-            <div class="camera-controls">
-              @if (isScanning) {
-                <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="stopScanning()"
-                  >
-                  {{ "SCANNER.STOP" | translate }}
-                </button>
-              }
-              @if (!isScanning) {
-                <button
-                  mat-raised-button
-                  (click)="startScanning()"
-                  >
-                  {{ "SCANNER.START" | translate }}
-                </button>
-              }
+                >{{ "SCANNER.DETECTED" | translate }}:
+                {{ detectedBarcode }}</span
+              >
             </div>
-          </div>
-        }
-
-        <!-- Camera Error Section -->
-        @if (cameraError) {
-          <div class="camera-error">
-            <mat-icon>error_outline</mat-icon>
-            <p>{{ cameraError }}</p>
-          </div>
-        }
-
-        <!-- Manual Barcode Input -->
-        <form
-          [formGroup]="form"
-          (ngSubmit)="onSubmitBarcode()"
-          class="manual-input-section"
-          >
-          <h3>{{ "SCANNER.MANUAL_ENTRY" | translate }}</h3>
-
-          <mat-form-field appearance="fill" class="full-width">
-            <mat-label>{{ "SCANNER.BARCODE_LABEL" | translate }}</mat-label>
-            <input
-              matInput
-              type="text"
-              formControlName="manualBarcode"
-              placeholder="0123456789"
-              />
-              <mat-icon matSuffix>barcode</mat-icon>
-            </mat-form-field>
-
-            @if (
-              form.get('manualBarcode')?.invalid &&
-              form.get('manualBarcode')?.touched
-              ) {
-              <div
-                class="input-errors"
-                >
-                @if (form.get('manualBarcode')?.hasError('required')) {
-                  <small>
-                    {{ "SCANNER.BARCODE_REQUIRED" | translate }}
-                  </small>
-                }
-                @if (form.get('manualBarcode')?.hasError('pattern')) {
-                  <small>
-                    {{ "SCANNER.BARCODE_INVALID" | translate }}
-                  </small>
-                }
-              </div>
-            }
-
-            <div class="manual-input-controls">
+          }
+          <div class="camera-controls">
+            @if (isScanning) {
               <button
                 mat-raised-button
                 color="primary"
-                type="submit"
-                [disabled]="form.invalid"
-                >
-                {{ "SCANNER.LOOKUP" | translate }}
+                (click)="stopScanning()"
+              >
+                {{ "SCANNER.STOP" | translate }}
               </button>
-              <button
-                mat-stroked-button
-                type="button"
-                (click)="clearDetectedBarcode()"
-                >
-                {{ "SCANNER.CLEAR" | translate }}
+            }
+            @if (!isScanning) {
+              <button mat-raised-button (click)="startScanning()">
+                {{ "SCANNER.START" | translate }}
               </button>
-            </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Camera Error Section -->
+      @if (cameraError) {
+        <div class="camera-error">
+          <mat-icon>error_outline</mat-icon>
+          <p>{{ cameraError }}</p>
+        </div>
+      }
+
+      <!-- Manual Barcode Input -->
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmitBarcode()"
+        class="manual-input-section"
+      >
+        <h3>{{ "SCANNER.MANUAL_ENTRY" | translate }}</h3>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>{{ "SCANNER.BARCODE_LABEL" | translate }}</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="manualBarcode"
+            placeholder="0123456789"
+          />
+          <mat-icon matSuffix>barcode</mat-icon>
+        </mat-form-field>
+
+        @if (
+          form.get("manualBarcode")?.invalid &&
+          form.get("manualBarcode")?.touched
+        ) {
+          <div class="input-errors">
+            @if (form.get("manualBarcode")?.hasError("required")) {
+              <small>
+                {{ "SCANNER.BARCODE_REQUIRED" | translate }}
+              </small>
+            }
+            @if (form.get("manualBarcode")?.hasError("pattern")) {
+              <small>
+                {{ "SCANNER.BARCODE_INVALID" | translate }}
+              </small>
+            }
+          </div>
+        }
+
+        <div class="manual-input-controls">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="form.invalid"
+          >
+            {{ "SCANNER.LOOKUP" | translate }}
+          </button>
+          <button
+            mat-stroked-button
+            type="button"
+            (click)="clearDetectedBarcode()"
+          >
+            {{ "SCANNER.CLEAR" | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
