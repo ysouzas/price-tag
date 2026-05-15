@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, Input, OnInit, ViewChild, ElementRef, OnDestroy, AfterViewInit, Inject, DOCUMENT } from '@angular/core';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';

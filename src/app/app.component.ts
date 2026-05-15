@@ -1,6 +1,6 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Renderer2 } from '@angular/core';
+
+import { Component, Inject, OnInit, Renderer2, DOCUMENT } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
