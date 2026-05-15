@@ -11,20 +11,19 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { Supermarket, SupermarketService } from '@services/supermarket/supermarket.service';
 
 @Component({
-  selector: 'app-supermarket-search',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    TranslateModule,
-  ],
-  templateUrl: './supermarket-search.component.html',
-  styleUrl: './supermarket-search.component.scss'
+    selector: 'app-supermarket-search',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        TranslateModule,
+    ],
+    templateUrl: './supermarket-search.component.html',
+    styleUrl: './supermarket-search.component.scss'
 })
 export class SupermarketSearchComponent implements OnInit {
   searchControl = new FormControl('');

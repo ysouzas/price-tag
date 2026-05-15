@@ -18,23 +18,22 @@ import { NgxScannerQrcodeModule } from '@zxing/ngx-scanner';
 import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
 
 @Component({
-  selector: 'app-barcode-scanner',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    TranslateModule,
-    NgxScannerQrcodeModule,
-  ],
-  templateUrl: './barcode-scanner.component.html',
-  styleUrls: ['./barcode-scanner.component.scss'],
+    selector: 'app-barcode-scanner',
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        TranslateModule,
+        NgxScannerQrcodeModule,
+    ],
+    templateUrl: './barcode-scanner.component.html',
+    styleUrls: ['./barcode-scanner.component.scss']
 })
 export class BarcodeScannerComponent implements OnInit, OnDestroy {
   form!: FormGroup;

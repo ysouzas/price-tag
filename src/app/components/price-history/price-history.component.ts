@@ -23,17 +23,16 @@ export interface Purchase {
 }
 
 @Component({
-  selector: 'app-price-history',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    TranslateModule,
-  ],
-  templateUrl: './price-history.component.html',
-  styleUrl: './price-history.component.scss'
+    selector: 'app-price-history',
+    imports: [
+        CommonModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        TranslateModule,
+    ],
+    templateUrl: './price-history.component.html',
+    styleUrl: './price-history.component.scss'
 })
 export class PriceHistoryComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input({ required: true }) barcode!: string;

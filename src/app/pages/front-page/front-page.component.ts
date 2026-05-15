@@ -8,18 +8,17 @@ import { ProductSearchComponent } from '@components/product-search/product-searc
 import { SupermarketSearchComponent } from '@components/supermarket-search/supermarket-search.component';
 
 @Component({
-  selector: 'app-front-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatTabsModule,
-    MatIconModule,
-    TranslateModule,
-    ProductSearchComponent,
-    SupermarketSearchComponent,
-  ],
-  templateUrl: './front-page.component.html',
-  styleUrls: ['./front-page.component.scss'],
+    selector: 'app-front-page',
+    imports: [
+        CommonModule,
+        MatTabsModule,
+        MatIconModule,
+        TranslateModule,
+        ProductSearchComponent,
+        SupermarketSearchComponent,
+    ],
+    templateUrl: './front-page.component.html',
+    styleUrls: ['./front-page.component.scss']
 })
 export class FrontPageComponent implements OnInit {
   selectedIndex = 0;

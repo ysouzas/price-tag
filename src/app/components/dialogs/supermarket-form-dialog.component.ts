@@ -9,18 +9,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SupermarketService, Supermarket } from '@services/supermarket/supermarket.service';
 
 @Component({
-  selector: 'app-supermarket-form-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    TranslateModule
-  ],
-  template: `
+    selector: 'app-supermarket-form-dialog',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        TranslateModule
+    ],
+    template: `
     <h2 mat-dialog-title>{{ 'SUPERMARKET.CREATE_TITLE' | translate }}</h2>
     <mat-dialog-content>
       <form [formGroup]="marketForm" class="dialog-form">
@@ -39,7 +38,7 @@ import { SupermarketService, Supermarket } from '@services/supermarket/supermark
       </button>
     </mat-dialog-actions>
   `,
-  styles: [`
+    styles: [`
     .dialog-form {
       display: flex;
       flex-direction: column;

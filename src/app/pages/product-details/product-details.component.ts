@@ -18,25 +18,24 @@ import { Supermarket, SupermarketService } from '@services/supermarket/supermark
 import { from } from 'rxjs';
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatSnackBarModule,
-    TranslateModule,
-    PriceHistoryComponent,
-    RouterModule,
-  ],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss'
+    selector: 'app-product-details',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        MatSnackBarModule,
+        TranslateModule,
+        PriceHistoryComponent,
+        RouterModule,
+    ],
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
   @ViewChild(PriceHistoryComponent) priceHistory!: PriceHistoryComponent;

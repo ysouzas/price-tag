@@ -10,18 +10,17 @@ import { SupermarketFormDialogComponent } from '../../components/dialogs/superma
 import { Supermarket, SupermarketService } from '@services/supermarket/supermarket.service';
 
 @Component({
-  selector: 'app-supermarkets',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    TranslateModule
-  ],
-  template: `
+    selector: 'app-supermarkets',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        TranslateModule
+    ],
+    template: `
     <div class="page-container animate-fade-in">
       <header class="page-header">
         <h1 class="page-title">{{ 'SUPERMARKETS.TITLE' | translate }}</h1>
@@ -60,7 +59,7 @@ import { Supermarket, SupermarketService } from '@services/supermarket/supermark
       }
     </div>
   `,
-  styles: [`
+    styles: [`
     .page-container {
       padding: 1.5rem;
       max-width: 800px;

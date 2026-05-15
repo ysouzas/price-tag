@@ -21,23 +21,22 @@ import { ProductFormDialogComponent } from '../dialogs/product-form-dialog.compo
 import { Product, ProductService } from '@services/product/product.service';
 
 @Component({
-  selector: 'app-product-search',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    MatCardModule,
-    MatDialogModule,
-    TranslateModule,
-  ],
-  templateUrl: './product-search.component.html',
-  styleUrls: ['./product-search.component.scss'],
+    selector: 'app-product-search',
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        MatCardModule,
+        MatDialogModule,
+        TranslateModule,
+    ],
+    templateUrl: './product-search.component.html',
+    styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit, OnDestroy {
   searchControl = new FormControl('');

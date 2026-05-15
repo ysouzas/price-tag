@@ -11,19 +11,18 @@ import { ProductFormDialogComponent } from '@components/dialogs/product-form-dia
 import { Product, ProductService } from '@services/product/product.service';
 
 @Component({
-  selector: 'app-products',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    TranslateModule,
-    RouterModule
-  ],
-  template: `
+    selector: 'app-products',
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        TranslateModule,
+        RouterModule
+    ],
+    template: `
     <div class="page-container animate-fade-in">
       <header class="page-header">
         <h1 class="page-title">{{ 'PRODUCTS.TITLE' | translate }}</h1>
@@ -75,7 +74,7 @@ import { Product, ProductService } from '@services/product/product.service';
       }
     </div>
   `,
-  styles: [`
+    styles: [`
     .page-container {
       padding: 1.5rem;
       max-width: 800px;

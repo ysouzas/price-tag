@@ -15,19 +15,18 @@ interface NavItem {
 }
 
 @Component({
-  selector: 'app-navigation',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatTabsModule,
-    MatButtonModule,
-    MatIconModule,
-    MatBottomSheetModule,
-    TranslateModule,
-  ],
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+    selector: 'app-navigation',
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatTabsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatBottomSheetModule,
+        TranslateModule,
+    ],
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
   @Input() activeSection: 'scanner' | 'search' | 'supermarkets' | 'products' =

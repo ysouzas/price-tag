@@ -14,22 +14,21 @@ import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service
 type ScannerState = 'idle' | 'scanning' | 'permission-denied' | 'no-camera';
 
 @Component({
-  selector: 'app-barcode-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
-    TranslateModule,
-    RouterModule,
-    MatRippleModule,
-  ],
-  templateUrl: './barcode-home.component.html',
-  styleUrl: './barcode-home.component.scss',
+    selector: 'app-barcode-home',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatProgressSpinnerModule,
+        TranslateModule,
+        RouterModule,
+        MatRippleModule,
+    ],
+    templateUrl: './barcode-home.component.html',
+    styleUrl: './barcode-home.component.scss'
 })
 export class BarcodeHomeComponent implements OnDestroy {
   @ViewChild('videoElement') videoRef!: ElementRef<HTMLVideoElement>;

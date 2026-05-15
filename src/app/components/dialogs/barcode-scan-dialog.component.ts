@@ -7,16 +7,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service';
 
 @Component({
-  selector: 'app-barcode-scan-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    TranslateModule,
-  ],
-  template: `
+    selector: 'app-barcode-scan-dialog',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatIconModule,
+        TranslateModule,
+    ],
+    template: `
     <h2 mat-dialog-title>{{ 'SCANNER.TITLE' | translate }}</h2>
     <mat-dialog-content>
       <div class="scanner-container">
@@ -31,7 +30,7 @@ import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service
       <button mat-button (click)="onCancel()">{{ 'COMMON.CANCEL' | translate }}</button>
     </mat-dialog-actions>
   `,
-  styles: [`
+    styles: [`
     .scanner-container {
       position: relative;
       width: 100%;

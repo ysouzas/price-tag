@@ -11,19 +11,18 @@ import { BarcodeScanDialogComponent } from './barcode-scan-dialog.component';
 import { ProductService, Product } from '@services/product/product.service';
 
 @Component({
-  selector: 'app-product-form-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    TranslateModule
-  ],
-  template: `
+    selector: 'app-product-form-dialog',
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        TranslateModule
+    ],
+    template: `
     <h2 mat-dialog-title>{{ 'PRODUCT.CREATE_TITLE' | translate }}</h2>
     <mat-dialog-content>
       <form [formGroup]="productForm" class="dialog-form">
@@ -56,7 +55,7 @@ import { ProductService, Product } from '@services/product/product.service';
       </button>
     </mat-dialog-actions>
   `,
-  styles: [`
+    styles: [`
     .dialog-form {
       display: flex;
       flex-direction: column;

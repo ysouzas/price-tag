@@ -33,12 +33,11 @@ const slideInAnimation = trigger('routeAnimations', [
 ]);
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, BackButtonComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  animations: [slideInAnimation]
+    selector: 'app-root',
+    imports: [RouterOutlet, BackButtonComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    animations: [slideInAnimation]
 })
 export class AppComponent implements OnInit {
   title = 'price-tag';
