@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,14 +11,13 @@ import { SupermarketService, Supermarket } from '@services/supermarket/supermark
 @Component({
     selector: 'app-supermarket-form-dialog',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        TranslateModule
-    ],
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    TranslateModule
+],
     template: `
     <h2 mat-dialog-title>{{ 'SUPERMARKET.CREATE_TITLE' | translate }}</h2>
     <mat-dialog-content>

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
@@ -20,18 +20,17 @@ import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service
 @Component({
     selector: 'app-barcode-scanner',
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatCardModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        TranslateModule,
-        NgxScannerQrcodeModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    TranslateModule,
+    NgxScannerQrcodeModule
+],
     templateUrl: './barcode-scanner.component.html',
     styleUrls: ['./barcode-scanner.component.scss']
 })

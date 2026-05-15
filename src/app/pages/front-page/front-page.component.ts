@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -10,13 +10,12 @@ import { SupermarketSearchComponent } from '@components/supermarket-search/super
 @Component({
     selector: 'app-front-page',
     imports: [
-        CommonModule,
-        MatTabsModule,
-        MatIconModule,
-        TranslateModule,
-        ProductSearchComponent,
-        SupermarketSearchComponent,
-    ],
+    MatTabsModule,
+    MatIconModule,
+    TranslateModule,
+    ProductSearchComponent,
+    SupermarketSearchComponent
+],
     templateUrl: './front-page.component.html',
     styleUrls: ['./front-page.component.scss']
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -12,14 +12,13 @@ import { Supermarket, SupermarketService } from '@services/supermarket/supermark
 @Component({
     selector: 'app-supermarkets',
     imports: [
-        CommonModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDialogModule,
-        MatSnackBarModule,
-        TranslateModule
-    ],
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    TranslateModule
+],
     template: `
     <div class="page-container animate-fade-in">
       <header class="page-header">

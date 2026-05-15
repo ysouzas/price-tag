@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,14 +17,13 @@ interface NavItem {
 @Component({
     selector: 'app-navigation',
     imports: [
-        CommonModule,
-        RouterModule,
-        MatTabsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatBottomSheetModule,
-        TranslateModule,
-    ],
+    RouterModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatBottomSheetModule,
+    TranslateModule
+],
     templateUrl: './navigation.component.html',
     styleUrls: ['./navigation.component.scss']
 })

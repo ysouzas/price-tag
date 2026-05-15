@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
@@ -23,18 +23,17 @@ import { Product, ProductService } from '@services/product/product.service';
 @Component({
     selector: 'app-product-search',
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        MatCardModule,
-        MatDialogModule,
-        TranslateModule,
-    ],
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+    MatDialogModule,
+    TranslateModule
+],
     templateUrl: './product-search.component.html',
     styleUrls: ['./product-search.component.scss']
 })

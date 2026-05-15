@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,20 +20,19 @@ import { from } from 'rxjs';
 @Component({
     selector: 'app-product-details',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatProgressSpinnerModule,
-        MatIconModule,
-        MatSnackBarModule,
-        TranslateModule,
-        PriceHistoryComponent,
-        RouterModule,
-    ],
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatSnackBarModule,
+    TranslateModule,
+    PriceHistoryComponent,
+    RouterModule
+],
     templateUrl: './product-details.component.html',
     styleUrl: './product-details.component.scss'
 })

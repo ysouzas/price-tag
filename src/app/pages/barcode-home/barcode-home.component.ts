@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,17 +16,16 @@ type ScannerState = 'idle' | 'scanning' | 'permission-denied' | 'no-camera';
 @Component({
     selector: 'app-barcode-home',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        TranslateModule,
-        RouterModule,
-        MatRippleModule,
-    ],
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    TranslateModule,
+    RouterModule,
+    MatRippleModule
+],
     templateUrl: './barcode-home.component.html',
     styleUrl: './barcode-home.component.scss'
 })

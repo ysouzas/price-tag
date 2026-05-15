@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -9,12 +9,11 @@ import { BarcodeScannerService } from '@services/barcode/barcode-scanner.service
 @Component({
     selector: 'app-barcode-scan-dialog',
     imports: [
-        CommonModule,
-        MatDialogModule,
-        MatButtonModule,
-        MatIconModule,
-        TranslateModule,
-    ],
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    TranslateModule
+],
     template: `
     <h2 mat-dialog-title>{{ 'SCANNER.TITLE' | translate }}</h2>
     <mat-dialog-content>

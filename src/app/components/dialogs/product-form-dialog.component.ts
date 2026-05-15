@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,15 +13,14 @@ import { ProductService, Product } from '@services/product/product.service';
 @Component({
     selector: 'app-product-form-dialog',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-        TranslateModule
-    ],
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    TranslateModule
+],
     template: `
     <h2 mat-dialog-title>{{ 'PRODUCT.CREATE_TITLE' | translate }}</h2>
     <mat-dialog-content>
