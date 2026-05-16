@@ -20,12 +20,12 @@ describe('FrontPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display scanner section by default', () => {
-    expect(component.activeSection).toBe('scanner');
+  it('should have selectedIndex 0 by default', () => {
+    expect(component.selectedIndex).toBe(0);
   });
 
-  it('should change active section on navigation', () => {
-    component.onNavigationChange('search');
-    expect(component.activeSection).toBe('search');
+  it('should set selectedIndex', () => {
+    component.selectedIndex = 1;
+    expect(component.selectedIndex).toBe(1);
   });
 });

@@ -47,8 +47,12 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
   allowedFormats = [
     BarcodeFormat.QR_CODE,
     BarcodeFormat.EAN_13,
+    BarcodeFormat.EAN_8,
     BarcodeFormat.CODE_128,
-    BarcodeFormat.DATA_MATRIX /*, ...*/,
+    BarcodeFormat.CODE_39,
+    BarcodeFormat.UPC_A,
+    BarcodeFormat.UPC_E,
+    BarcodeFormat.DATA_MATRIX,
   ];
 
   constructor(
@@ -63,7 +67,14 @@ export class BarcodeScannerComponent implements OnInit, OnDestroy {
 
   private initializeForm(): void {
     this.form = this.fb.group({
-      manualBarcode: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      manualBarcode: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern(/^[a-zA-Z0-9]+$/),
+        ],
+      ],
     });
   }
 

@@ -12,6 +12,7 @@
             <zxing-scanner
               [autostart]="isScanning"
               [formats]="allowedFormats"
+              [tryHarder]="true"
               (scanSuccess)="onCodeResult($event)"
               (permissionResponse)="onCameraPermissionError($event)"
               (scannerError)="onScannerError($event)"
